@@ -1,0 +1,6 @@
+toggles:
+    - name: "abc.r1"
+      description: "Abc r1 toggle"
+
+    - name: "xyz.r2"
+      description: "Abc r1 toggle"
