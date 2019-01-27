@@ -51,6 +51,8 @@ public class ToggleRule implements TestRule {
     private void mockGivenToggle(GivenToggle givenToggle) {
         when(toggleDecider.isToggleOn(givenToggle.name())).thenReturn(givenToggle.value().getValue());
         when(toggleDecider.isToggleOff(givenToggle.name())).thenReturn(!givenToggle.value().getValue());
+        when(toggleDecider.isToggleDefined(givenToggle.name())).thenReturn(givenToggle.defined().getValue());
+
     }
 
     private GivenToggle[] getGivenToggles(Description description) {

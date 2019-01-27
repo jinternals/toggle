@@ -1,8 +1,10 @@
 package com.jinternals.toggle.interceptor;
 
 import com.jinternals.toggle.annotation.Toggle;
-import com.jinternals.toggle.api.decider.ToggleDecider;
+import com.jinternals.toggle.test.rules.ToggleRule;
+import com.jinternals.toggle.test.rules.annotations.GivenToggle;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -13,20 +15,22 @@ import org.springframework.web.method.HandlerMethod;
 
 import java.lang.annotation.Annotation;
 
+import static com.jinternals.toggle.test.ToggleValue.FALSE;
+import static com.jinternals.toggle.test.ToggleValue.TRUE;
 import static javax.servlet.http.HttpServletResponse.SC_NOT_FOUND;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class ToggleInterceptorTest {
 
     private MockHttpServletRequest request = new MockHttpServletRequest();
     private MockHttpServletResponse response = new MockHttpServletResponse();
     private String featureToggleName = "some-feature";
 
-    @Mock
-    private ToggleDecider featureToggleDecider;
+    @Rule
+    public ToggleRule toggleRule = new ToggleRule();
 
     @Mock
     private HandlerMethod handlerMethod;
@@ -50,15 +54,13 @@ public class ToggleInterceptorTest {
             }
         });
 
-        when(featureToggleDecider.isToggleDefined(featureToggleName)).thenReturn(true);
-
     }
 
     @Test
+    @GivenToggle(name = "some-feature", value = TRUE)
     public void shouldReturnTrueIfMethodIsAnnotatedAndToggleIsOn() throws Exception {
-        when(featureToggleDecider.isToggleOn(featureToggleName)).thenReturn(true);
 
-        ToggleInterceptor interceptor = new ToggleInterceptor(featureToggleDecider);
+        ToggleInterceptor interceptor = new ToggleInterceptor(toggleRule.getToggleDecider());
 
         boolean result = interceptor.preHandle(request, response, handlerMethod);
 
@@ -67,10 +69,10 @@ public class ToggleInterceptorTest {
     }
 
     @Test
+    @GivenToggle(name = "some-feature", value = FALSE)
     public void shouldReturnFalseIfMethodIsAnnotatedAndToggleIsOff() throws Exception {
-        when(featureToggleDecider.isToggleOn(featureToggleName)).thenReturn(false);
 
-        ToggleInterceptor interceptor = new ToggleInterceptor(featureToggleDecider);
+        ToggleInterceptor interceptor = new ToggleInterceptor(toggleRule.getToggleDecider());
 
         boolean result = interceptor.preHandle(request, response, handlerMethod);
 
@@ -80,20 +82,23 @@ public class ToggleInterceptorTest {
     }
 
     @Test
+    @GivenToggle(name = "some-feature", value = FALSE)
     public void shouldReturnTrueIfMethodIsNotAnnotated() throws Exception {
         when(handlerMethod.getMethodAnnotation(Toggle.class)).thenReturn(null);
 
-        ToggleInterceptor interceptor = new ToggleInterceptor(featureToggleDecider);
+        ToggleInterceptor interceptor = new ToggleInterceptor(toggleRule.getToggleDecider());
 
         boolean result = interceptor.preHandle(request, response, handlerMethod);
 
         assertThat(result).isTrue();
     }
 
+
     @Test
+    @GivenToggle(name = "some-feature", value = FALSE, defined = FALSE)
     public void shouldReturnFalseIfFeatureToggleIsNotDefined() throws Exception {
 
-        ToggleInterceptor interceptor = new ToggleInterceptor(featureToggleDecider);
+        ToggleInterceptor interceptor = new ToggleInterceptor(toggleRule.getToggleDecider());
 
         boolean result = interceptor.preHandle(request, response, handlerMethod);
 

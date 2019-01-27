@@ -1,13 +1,13 @@
 package com.jinternals.toggle.test;
 
-public enum  MockToggleValue {
+public enum ToggleValue {
 
     TRUE(true),
     FALSE(false);
 
     private boolean value;
 
-    MockToggleValue(boolean value) {
+    ToggleValue(boolean value) {
         this.value = value;
     }
 

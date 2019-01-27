@@ -6,8 +6,8 @@ import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static com.jinternals.toggle.test.MockToggleValue.FALSE;
-import static com.jinternals.toggle.test.MockToggleValue.TRUE;
+import static com.jinternals.toggle.test.ToggleValue.FALSE;
+import static com.jinternals.toggle.test.ToggleValue.TRUE;
 
 public class ToggleRuleTest {
 
