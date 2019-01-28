@@ -26,14 +26,14 @@
     </properties>
 
     <modules>
-        <module>toggle-api</module>
-        <module>toggle-core</module>
-        <module>toggle-spring</module>
-        <module>toggle-starter</module>
-        <module>toggle-actuator</module>
-        <module>toggle-generator-maven-plugin</module>
-        <module>toggle-definition-parser</module>
-        <module>toggle-test</module>
+        <module>jinternals-toggle-api</module>
+        <module>jinternals-toggle-core</module>
+        <module>jinternals-toggle-spring</module>
+        <module>jinternals-toggle-starter</module>
+        <module>jinternals-toggle-actuator</module>
+        <module>jinternals-toggle-generator-maven-plugin</module>
+        <module>jinternals-toggle-definition-parser</module>
+        <module>jinternals-toggle-test</module>
     </modules>
 
     <dependencyManagement>
@@ -68,19 +68,37 @@
 
             <dependency>
                 <groupId>com.jinternals.toggle</groupId>
-                <artifactId>toggle-api</artifactId>
+                <artifactId>jinternals-toggle-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.jinternals.toggle</groupId>
-                <artifactId>toggle-test</artifactId>
+                <artifactId>jinternals-toggle-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
-        <dependency>
+            <dependency>
                 <groupId>com.jinternals.toggle</groupId>
-                <artifactId>toggle-definition-parser</artifactId>
+                <artifactId>jinternals-toggle-actuator</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.jinternals.toggle</groupId>
+                <artifactId>jinternals-toggle-spring</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.jinternals.toggle</groupId>
+                <artifactId>jinternals-toggle-definition-parser</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.jinternals.toggle</groupId>
+                <artifactId>jinternals-toggle-test</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
