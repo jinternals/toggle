@@ -1,6 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.jinternals.toggle.autoconfig.ToggleAutoConfiguration,\
-com.jinternals.toggle.autoconfig.ToggleInterceptorAutoConfiguration
-
-org.springframework.boot.actuate.autoconfigure.ManagementContextConfiguration=\
+com.jinternals.toggle.autoconfig.ToggleInterceptorAutoConfiguration,\
 com.jinternals.toggle.autoconfig.ToggleEndpointAutoConfiguration

@@ -6,6 +6,7 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.project.MavenProject;
 
 import java.io.File;
 
@@ -16,6 +17,9 @@ import static java.io.File.separatorChar;
 
 @Mojo(name = "generate")
 public class ToggleGenerator extends AbstractMojo {
+
+    @Parameter(defaultValue = "${project}")
+    private MavenProject project;
 
     @Parameter(property = "fileName", defaultValue = TOGGLE_FILE_NAME)
     private String fileName;
@@ -46,13 +50,17 @@ public class ToggleGenerator extends AbstractMojo {
 
         getLog().info("ToggleDefinition : " + toggleDefinition);
 
+        File generateCodeOutputDirectory = new File(this.outputDirectory.toString() + separatorChar + "/generated-sources/java");
         toggleCodeGenerator()
-                .generate(toggleDefinition, packageName, new File(outputDirectory.toString() + separatorChar + "/generated-sources/java"));
+                .generate(toggleDefinition, packageName, generateCodeOutputDirectory);
 
 
         getLog().info("Filename " + fileName);
-        getLog().info("outputDirectory " + outputDirectory);
+        getLog().info("outputDirectory " + this.outputDirectory);
         getLog().info("sourceDirectory " + sourceDirectory);
+
+        project.addCompileSourceRoot(generateCodeOutputDirectory.getPath());
+
     }
 
 
@@ -66,15 +74,15 @@ public class ToggleGenerator extends AbstractMojo {
         return false;
     }
 
-    public String getPackageName() {
+    protected String getPackageName() {
         return packageName;
     }
 
-    public File getOutputDirectory() {
+    protected File getOutputDirectory() {
         return outputDirectory;
     }
 
-    public String getFileName() {
+    protected String getFileName() {
         return fileName;
     }
 }

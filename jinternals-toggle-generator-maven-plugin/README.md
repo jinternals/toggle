@@ -4,20 +4,19 @@ backbone toggle maven plugin generates Features interface containing all the tog
 
 ### Maven dependency :
 
-              <plugin>
-                     <groupId>com.jinternals.backbone</groupId>
-                     <artifactId>backbone-toggle-generator-maven-plugin</artifactId>
-                     <configuration>
-                         <packageName>some package name</packageName>
-                         <!-- toggleDefinitions.yml -->
-                         <fileName>Toggle-defiantion file name</fileName>
-                     </configuration>
-                     <executions>
-                         <execution>
-                             <phase>generate-sources</phase>
-                             <goals>
-                                 <goal>generate</goal>
-                             </goals>
-                         </execution>
-                 </executions>
-              </plugin>
+                        <plugin>
+                             <groupId>com.jinternals.toggle</groupId>
+                             <artifactId>jinternals-toggle-generator-maven-plugin</artifactId>
+                             <version>${project.version}</version>
+                             <configuration>
+                                 <packageName>com.cloud.example.toggle</packageName>
+                             </configuration>
+                             <executions>
+                                 <execution>
+                                     <phase>generate-sources</phase>
+                                     <goals>
+                                         <goal>generate</goal>
+                                     </goals>
+                                 </execution>
+                             </executions>
+                         </plugin>
