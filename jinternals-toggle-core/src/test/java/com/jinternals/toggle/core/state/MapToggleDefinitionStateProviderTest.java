@@ -8,7 +8,7 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
-public class MapToggleStateProviderTest {
+public class MapToggleDefinitionStateProviderTest {
 
     private MapToggleStateProvider mapToggleStateProvider;
 

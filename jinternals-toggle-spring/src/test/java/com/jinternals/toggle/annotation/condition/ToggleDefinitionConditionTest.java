@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class ToggleConditionTest {
+public class ToggleDefinitionConditionTest {
 
     @Mock
     private ConditionContext conditionContext;

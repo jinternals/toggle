@@ -1,8 +1,8 @@
 package com.jinternals.toggle.generator.plugin.code.generator.impl;
 
-import com.jinternals.toggle.core.defination.parser.ToggleDefinition;
+import com.jinternals.toggle.api.definition.ToggleDefinition;
+import com.jinternals.toggle.core.defination.parser.ToggleDefinitions;
 import com.jinternals.toggle.generator.plugin.code.generator.ToggleCodeGenerator;
-import com.jinternals.toggle.api.Toggle;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.TypeSpec;
@@ -17,13 +17,13 @@ import static javax.lang.model.element.Modifier.*;
 public class ToggleCodeGeneratorImpl implements ToggleCodeGenerator {
 
     @Override
-    public void generate(ToggleDefinition toggles, String packageName, File outputDirectory) {
+    public void generate(ToggleDefinitions toggleDefinitions, String packageName, File outputDirectory) {
         final TypeSpec.Builder featureInterfaceBuilder = interfaceBuilder("Toggles")
                 .addModifiers(PUBLIC);
 
-        for (Toggle Toggle : toggles.getToggles()) {
-            FieldSpec fieldSpec = FieldSpec.builder(String.class, normalizeName(Toggle.getName()), PUBLIC, STATIC, FINAL)
-                    .initializer("$S", Toggle.getName())
+        for (ToggleDefinition toggleDefinition : toggleDefinitions.getToggles()) {
+            FieldSpec fieldSpec = FieldSpec.builder(String.class, normalizeName(toggleDefinition.getName()), PUBLIC, STATIC, FINAL)
+                    .initializer("$S", toggleDefinition.getName())
                     .build();
             featureInterfaceBuilder.addField(fieldSpec);
         }

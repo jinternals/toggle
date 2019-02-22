@@ -7,7 +7,7 @@ import java.util.Properties;
 
 import static org.junit.Assert.*;
 
-public class PropertiesToggleStateProviderTest {
+public class PropertiesToggleDefinitionStateProviderTest {
 
     private PropertiesToggleStateProvider propertiesToggleStateProvider;
 

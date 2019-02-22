@@ -1,6 +1,6 @@
 # backbone-toggle-generator-maven-plugin
 
-backbone toggle maven plugin generates Features interface containing all the toggles define in toggle defination file
+backbone toggle maven plugin generates Features interface containing all the toggleDefinitions define in toggle defination file
 
 ### Maven dependency :
 

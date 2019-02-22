@@ -1,11 +1,9 @@
 package com.jinternals.toggle.api.definition;
 
-import com.jinternals.toggle.api.Toggle;
-
-import java.util.List;
+import java.util.Set;
 
 public interface ToggleDefinitionProvider {
 
-    List<Toggle> getToggles();
+    Set<ToggleDefinition> getToggleDefinitions();
 
 }

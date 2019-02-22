@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 
 
 @RunWith(MockitoJUnitRunner.Silent.class)
-public class ToggleInterceptorTest {
+public class ToggleDefinitionInterceptorTest {
 
     private MockHttpServletRequest request = new MockHttpServletRequest();
     private MockHttpServletResponse response = new MockHttpServletResponse();

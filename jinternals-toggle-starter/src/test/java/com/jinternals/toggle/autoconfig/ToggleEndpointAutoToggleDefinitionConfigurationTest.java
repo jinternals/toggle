@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ToggleEndpointAutoToggleConfigurationTest {
+public class ToggleEndpointAutoToggleDefinitionConfigurationTest {
 
     private AnnotationConfigApplicationContext context;
 

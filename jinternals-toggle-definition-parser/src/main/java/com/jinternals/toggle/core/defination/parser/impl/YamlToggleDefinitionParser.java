@@ -1,6 +1,6 @@
 package com.jinternals.toggle.core.defination.parser.impl;
 
-import com.jinternals.toggle.core.defination.parser.ToggleDefinition;
+import com.jinternals.toggle.core.defination.parser.ToggleDefinitions;
 import com.jinternals.toggle.core.defination.parser.ToggleDefinitionParser;
 import org.yaml.snakeyaml.Yaml;
 
@@ -10,10 +10,10 @@ import java.io.InputStream;
 
 public class YamlToggleDefinitionParser implements ToggleDefinitionParser {
 
-    public ToggleDefinition parse(InputStream stream) {
+    public ToggleDefinitions parse(InputStream stream) {
         Yaml yaml = new Yaml();
         try {
-            return yaml.loadAs(stream, ToggleDefinition.class);
+            return yaml.loadAs(stream, ToggleDefinitions.class);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -26,10 +26,10 @@ public class YamlToggleDefinitionParser implements ToggleDefinitionParser {
         return null;
     }
 
-    public ToggleDefinition parse(File file) {
+    public ToggleDefinitions parse(File file) {
         try (InputStream inputStream = new FileInputStream(file)) {
             Yaml yaml = new Yaml();
-            return yaml.loadAs(inputStream, ToggleDefinition.class);
+            return yaml.loadAs(inputStream, ToggleDefinitions.class);
         } catch (Exception e) {
             e.printStackTrace();
         }

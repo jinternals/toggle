@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class EnvironmentToggleStateProviderTest {
+public class EnvironmentToggleDefinitionStateProviderTest {
 
     private EnvironmentFeatureToggleStateProvider provider;
 

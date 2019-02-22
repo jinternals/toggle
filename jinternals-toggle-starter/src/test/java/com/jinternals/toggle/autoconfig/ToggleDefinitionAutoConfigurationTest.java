@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ToggleAutoConfigurationTest {
+public class ToggleDefinitionAutoConfigurationTest {
 
     private AnnotationConfigApplicationContext context;
 
@@ -47,7 +47,7 @@ public class ToggleAutoConfigurationTest {
     public void shouldLoadFeatureFeatureConfigBean() {
         load(EmptyConfiguration.class);
         ToggleDefinitionProvider featureConfig = this.context.getBean(ToggleDefinitionProvider.class);
-        assertThat(featureConfig.getToggles().size()).isEqualTo(2);
+        assertThat(featureConfig.getToggleDefinitions().size()).isEqualTo(2);
     }
 
     @Configuration

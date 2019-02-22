@@ -1,7 +1,7 @@
 package com.jinternals.toggle.autoconfig;
 
 import com.jinternals.toggle.core.decider.DefaultToggleDecider;
-import com.jinternals.toggle.core.defination.ClasspathToggleDefinitionProvider;
+import com.jinternals.toggle.defination.ClasspathToggleDefinitionProvider;
 import com.jinternals.toggle.core.defination.parser.ToggleDefinitionParser;
 import com.jinternals.toggle.core.defination.parser.impl.YamlToggleDefinitionParser;
 import com.jinternals.toggle.core.repository.ToggleRepository;

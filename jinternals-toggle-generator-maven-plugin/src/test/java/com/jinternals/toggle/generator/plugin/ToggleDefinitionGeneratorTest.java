@@ -14,7 +14,7 @@ import static java.lang.String.format;
 import static org.junit.Assert.*;
 
 @Ignore
-public class ToggleGeneratorTest {
+public class ToggleDefinitionGeneratorTest {
 
     @Rule
     public MojoRule rule = new MojoRule();

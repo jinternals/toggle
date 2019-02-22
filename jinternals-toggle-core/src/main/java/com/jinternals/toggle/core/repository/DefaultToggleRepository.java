@@ -1,7 +1,7 @@
 package com.jinternals.toggle.core.repository;
 
 
-import com.jinternals.toggle.api.Toggle;
+import com.jinternals.toggle.api.definition.ToggleDefinition;
 import com.jinternals.toggle.api.definition.ToggleDefinitionProvider;
 import com.jinternals.toggle.api.state.ToggleStateProvider;
 
@@ -15,7 +15,7 @@ import static java.util.stream.Collectors.toSet;
 
 public class DefaultToggleRepository implements ToggleRepository {
 
-    private Map<String, Toggle> toggles;
+    private Map<String, ToggleDefinition> toggles;
     private final ToggleStateProvider toggleStateProvider;
     private final ToggleDefinitionProvider toggleDefinitionProvider;
 
@@ -24,10 +24,10 @@ public class DefaultToggleRepository implements ToggleRepository {
         this.toggleDefinitionProvider = toggleDefinitionProvider;
     }
 
-    public Map<String, Toggle> getAllToggles() {
+    public Map<String, ToggleDefinition> getAllToggles() {
         if (isNull(toggles)) {
             toggles = toggleDefinitionProvider
-                    .getToggles()
+                    .getToggleDefinitions()
                     .stream()
                     .collect(toMap(toggle -> toggle.getName(), toggle -> toggle));
         }

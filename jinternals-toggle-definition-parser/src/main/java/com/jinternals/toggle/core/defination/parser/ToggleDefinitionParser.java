@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.InputStream;
 
 public interface ToggleDefinitionParser {
-    public ToggleDefinition parse(InputStream stream);
-    public ToggleDefinition parse(File stream);
+    public ToggleDefinitions parse(InputStream stream);
+    public ToggleDefinitions parse(File stream);
+
 }

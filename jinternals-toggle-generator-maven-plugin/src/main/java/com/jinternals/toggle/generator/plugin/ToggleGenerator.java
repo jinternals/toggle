@@ -1,6 +1,6 @@
 package com.jinternals.toggle.generator.plugin;
 
-import com.jinternals.toggle.core.defination.parser.ToggleDefinition;
+import com.jinternals.toggle.core.defination.parser.ToggleDefinitions;
 import com.jinternals.toggle.generator.plugin.exception.ToggleGeneratorException;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -46,13 +46,13 @@ public class ToggleGenerator extends AbstractMojo {
             throw new ToggleGeneratorException("File or Directory don't exist");
         }
 
-        ToggleDefinition toggleDefinition = toggleDefinitionParser().parse(file);
+        ToggleDefinitions toggleDefinitions = toggleDefinitionParser().parse(file);
 
-        getLog().info("ToggleDefinition : " + toggleDefinition);
+        getLog().info("ToggleDefinitions : " + toggleDefinitions);
 
         File generateCodeOutputDirectory = new File(this.outputDirectory.toString() + separatorChar + "/generated-sources/java");
         toggleCodeGenerator()
-                .generate(toggleDefinition, packageName, generateCodeOutputDirectory);
+                .generate(toggleDefinitions, packageName, generateCodeOutputDirectory);
 
 
         getLog().info("Filename " + fileName);

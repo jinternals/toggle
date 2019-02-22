@@ -12,7 +12,7 @@
 
 Spring bean and controller level methods:
 
-            @Toggle(Toggle = "some.toggle", expectedToBeOn = true)
+            @ToggleDefinition(ToggleDefinition = "some.toggle", expectedToBeOn = true)
 
     
 Code level toggle conditions:

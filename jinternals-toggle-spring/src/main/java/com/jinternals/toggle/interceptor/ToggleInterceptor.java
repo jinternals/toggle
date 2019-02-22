@@ -42,12 +42,12 @@ public class ToggleInterceptor extends HandlerInterceptorAdapter {
         }
 
         if (toggleDecider.isToggleDefined(annotation.name()) == false) {
-            logger.info(format("Toggle %s is not defined.", annotation.name()));
+            logger.info(format("ToggleDefinition %s is not defined.", annotation.name()));
             response.setStatus(SC_NOT_FOUND);
             return false;
         }
 
-        logger.info(format("Toggle %s  expectedToBeOn : %s and is %s .", annotation.name(), annotation.expectedToBeOn(), toggleDecider.isToggleOn(annotation.name())));
+        logger.info(format("ToggleDefinition %s  expectedToBeOn : %s and is %s .", annotation.name(), annotation.expectedToBeOn(), toggleDecider.isToggleOn(annotation.name())));
 
         if (annotation.expectedToBeOn() == toggleDecider.isToggleOn(annotation.name())) {
             return true;

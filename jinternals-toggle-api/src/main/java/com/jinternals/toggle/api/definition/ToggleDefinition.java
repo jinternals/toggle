@@ -1,15 +1,15 @@
-package com.jinternals.toggle.api;
+package com.jinternals.toggle.api.definition;
 
-public class Toggle {
+public class ToggleDefinition {
 
     private String name;
     private String description;
     private State state;
 
-    public Toggle() {
+    public ToggleDefinition() {
     }
 
-    public Toggle(String name, String description,State state) {
+    public ToggleDefinition(String name, String description, State state) {
         this.name = name;
         this.description = description;
         this.state = state;
@@ -41,7 +41,7 @@ public class Toggle {
 
     @Override
     public String toString() {
-        return "Toggle {" +
+        return "ToggleDefinition {" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", state=" + state +

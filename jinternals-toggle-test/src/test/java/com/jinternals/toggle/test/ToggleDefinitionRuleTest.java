@@ -9,7 +9,7 @@ import org.junit.Test;
 import static com.jinternals.toggle.test.ToggleValue.FALSE;
 import static com.jinternals.toggle.test.ToggleValue.TRUE;
 
-public class ToggleRuleTest {
+public class ToggleDefinitionRuleTest {
 
     @Rule
     public ToggleRule toggleRule = new ToggleRule();
