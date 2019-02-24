@@ -1,5 +1,7 @@
 package com.jinternals.toggle.api.definition;
 
+import java.util.Objects;
+
 public class ToggleDefinition {
 
     private String name;
@@ -37,6 +39,21 @@ public class ToggleDefinition {
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ToggleDefinition that = (ToggleDefinition) o;
+        return Objects.equals(name, that.name) &&
+                Objects.equals(description, that.description) &&
+                state == that.state;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, state);
     }
 
     @Override

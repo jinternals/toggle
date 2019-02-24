@@ -20,7 +20,7 @@ public class ToggleEndpointAutoConfiguration {
     @ConditionalOnClass({ToggleRepository.class})
     @ConditionalOnMissingBean
     @ConditionalOnEnabledEndpoint
-    public ToggleEndpoint toggleFeatureEndpoint() {
+    public ToggleEndpoint toggleEndpoint() {
         return new ToggleEndpoint();
     }
 

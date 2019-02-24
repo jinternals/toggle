@@ -1,15 +1,13 @@
 package com.jinternals.toggle.api.state;
 
-import com.jinternals.toggle.api.constants.ToggleConstants;
-
-import static java.lang.String.format;
+import static com.jinternals.toggle.api.utils.ToggleUtils.toggleName;
 
 public abstract class AbstractToggleStateProvider implements ToggleStateProvider {
 
 
     @Override
     public boolean getState(String toggle) {
-        return this.getToggleState(format("%s.%s.%s", ToggleConstants.PREFIX,toggle,ToggleConstants.SUFFIX));
+        return this.getToggleState(toggleName(toggle));
     }
 
     public abstract boolean getToggleState(String toggle);

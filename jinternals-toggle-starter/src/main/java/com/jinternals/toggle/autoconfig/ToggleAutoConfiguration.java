@@ -34,31 +34,31 @@ public class ToggleAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public ToggleDefinitionParser featureToggleDefinitionParser() {
+    public ToggleDefinitionParser toggleDefinitionParser() {
         return new YamlToggleDefinitionParser();
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public ToggleDefinitionProvider featureToggleDefinitionProvider(ToggleDefinitionParser toggleDefinitionParser) {
+    public ToggleDefinitionProvider toggleDefinitionProvider(ToggleDefinitionParser toggleDefinitionParser) {
         return new ClasspathToggleDefinitionProvider(toggleConfiguration.getDefinitionFile(), toggleDefinitionParser);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public ToggleStateProvider getEnvironmentFeatureToggleStateProvider(Environment environment) {
+    public ToggleStateProvider toggleStateProvider(Environment environment) {
         return new EnvironmentFeatureToggleStateProvider(environment);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public ToggleRepository getFeatureToggleInfoProvider(ToggleDefinitionProvider definitionProvider, ToggleStateProvider stateProvider) {
+    public ToggleRepository toggleRepository(ToggleDefinitionProvider definitionProvider, ToggleStateProvider stateProvider) {
         return new DefaultToggleRepository(definitionProvider, stateProvider);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public ToggleDecider getFeatureToggleDecider(ToggleRepository featureToggleInfoProvider) {
+    public ToggleDecider toggleDecider(ToggleRepository featureToggleInfoProvider) {
         return new DefaultToggleDecider(featureToggleInfoProvider);
     }
 

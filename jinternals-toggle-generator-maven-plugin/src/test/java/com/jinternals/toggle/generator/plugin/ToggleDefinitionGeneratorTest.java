@@ -55,4 +55,5 @@ public class ToggleDefinitionGeneratorTest {
     private File loadPom(String folderName) {
         return new File("src/test/resources/", folderName);
     }
+
 }
