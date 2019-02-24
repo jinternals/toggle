@@ -51,7 +51,7 @@ public class ToggleDefinitionConditionTest {
     }
 
     @Test
-    public void shouldReturnTrueIfFeatureToggleAnnotationIsPresentAndConditionIsTrue() {
+    public void shouldReturnTrueIfToggleAnnotationIsPresentAndConditionIsTrue() {
 
         when(conditionContext.getEnvironment()).thenReturn(environment);
         when(environment.getProperty(toggleName("some-name"))).thenReturn("true");
@@ -62,7 +62,7 @@ public class ToggleDefinitionConditionTest {
     }
 
     @Test
-    public void shouldReturnTrueIfFeatureToggleAnnotationIsNotPresent() {
+    public void shouldReturnTrueIfToggleAnnotationIsNotPresent() {
         when(annotatedTypeMetadata.isAnnotated(Toggle.class.getCanonicalName())).thenReturn(false);
 
         boolean result = toggleCondition.matches(conditionContext, annotatedTypeMetadata);
@@ -72,7 +72,7 @@ public class ToggleDefinitionConditionTest {
     }
 
     @Test
-    public void shouldReturnFalseIfFeatureToggleAnnotationIsPresentAndExpectedToBeFalseAndIsFalse() {
+    public void shouldReturnFalseIfToggleAnnotationIsPresentAndExpectedToBeFalseAndIsFalse() {
 
         when(conditionContext.getEnvironment()).thenReturn(environment);
         when(environment.getProperty(toggleName("some-name"))).thenReturn("false");
@@ -84,7 +84,7 @@ public class ToggleDefinitionConditionTest {
     }
 
     @Test
-    public void shouldReturnFalseIfFeatureToggleIsNotDefined() {
+    public void shouldReturnFalseIfToggleIsNotDefined() {
 
         when(conditionContext.getEnvironment()).thenReturn(environment);
         when(environment.getProperty(toggleName("some-name"))).thenReturn("false");

@@ -18,17 +18,17 @@ public class ToggleCodeGeneratorImpl implements ToggleCodeGenerator {
 
     @Override
     public void generate(ToggleDefinitions toggleDefinitions, String packageName, File outputDirectory) {
-        final TypeSpec.Builder featureInterfaceBuilder = interfaceBuilder("Toggles")
+        final TypeSpec.Builder togglesInterfaceBuilder = interfaceBuilder("Toggles")
                 .addModifiers(PUBLIC);
 
         for (ToggleDefinition toggleDefinition : toggleDefinitions.getToggles()) {
             FieldSpec fieldSpec = FieldSpec.builder(String.class, normalizeName(toggleDefinition.getName()), PUBLIC, STATIC, FINAL)
                     .initializer("$S", toggleDefinition.getName())
                     .build();
-            featureInterfaceBuilder.addField(fieldSpec);
+            togglesInterfaceBuilder.addField(fieldSpec);
         }
 
-        TypeSpec typeSpec = featureInterfaceBuilder.build();
+        TypeSpec typeSpec = togglesInterfaceBuilder.build();
 
         JavaFile javaFile = JavaFile.builder(packageName, typeSpec)
                 .build();

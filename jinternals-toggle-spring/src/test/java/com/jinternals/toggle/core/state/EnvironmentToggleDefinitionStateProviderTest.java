@@ -13,14 +13,14 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 public class EnvironmentToggleDefinitionStateProviderTest {
 
-    private EnvironmentFeatureToggleStateProvider provider;
+    private EnvironmentToggleStateProvider provider;
 
     @Mock
     private Environment environment;
 
     @Before
     public void setUp() throws Exception {
-        provider = new EnvironmentFeatureToggleStateProvider(environment);
+        provider = new EnvironmentToggleStateProvider(environment);
     }
 
     @Test

@@ -27,7 +27,7 @@ public class ToggleDefinitionInterceptorTest {
 
     private MockHttpServletRequest request = new MockHttpServletRequest();
     private MockHttpServletResponse response = new MockHttpServletResponse();
-    private String featureToggleName = "some-name";
+    private String toggleName = "some-name";
 
     @Rule
     public ToggleRule toggleRule = new ToggleRule();
@@ -45,7 +45,7 @@ public class ToggleDefinitionInterceptorTest {
 
             @Override
             public String name() {
-                return featureToggleName;
+                return toggleName;
             }
 
             @Override
@@ -96,7 +96,7 @@ public class ToggleDefinitionInterceptorTest {
 
     @Test
     @GivenToggle(name = "some-name", value = FALSE, defined = FALSE)
-    public void shouldReturnFalseIfFeatureToggleIsNotDefined() throws Exception {
+    public void shouldReturnFalseIfToggleIsNotDefined() throws Exception {
 
         ToggleInterceptor interceptor = new ToggleInterceptor(toggleRule.getToggleDecider());
 

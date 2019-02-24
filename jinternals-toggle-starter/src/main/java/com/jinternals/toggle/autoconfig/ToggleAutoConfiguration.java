@@ -9,7 +9,7 @@ import com.jinternals.toggle.core.repository.DefaultToggleRepository;
 import com.jinternals.toggle.api.decider.ToggleDecider;
 import com.jinternals.toggle.api.definition.ToggleDefinitionProvider;
 import com.jinternals.toggle.api.state.ToggleStateProvider;
-import com.jinternals.toggle.core.state.EnvironmentFeatureToggleStateProvider;
+import com.jinternals.toggle.core.state.EnvironmentToggleStateProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -47,7 +47,7 @@ public class ToggleAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public ToggleStateProvider toggleStateProvider(Environment environment) {
-        return new EnvironmentFeatureToggleStateProvider(environment);
+        return new EnvironmentToggleStateProvider(environment);
     }
 
     @Bean
@@ -58,8 +58,8 @@ public class ToggleAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public ToggleDecider toggleDecider(ToggleRepository featureToggleInfoProvider) {
-        return new DefaultToggleDecider(featureToggleInfoProvider);
+    public ToggleDecider toggleDecider(ToggleRepository toggleRepository) {
+        return new DefaultToggleDecider(toggleRepository);
     }
 
 }

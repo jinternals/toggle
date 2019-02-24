@@ -9,12 +9,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class TestConfiguration {
     @Bean
-    public ToggleEndpoint toggleFeatureEndpoint() {
+    public ToggleEndpoint toggleEndpoint() {
         return new ToggleEndpoint();
     }
 
     @Bean
-    public ToggleRepository defaultToggleRepository() {
+    public ToggleRepository toggleRepository() {
         return Mockito.mock(ToggleRepository.class);
 
     }

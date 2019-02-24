@@ -24,7 +24,7 @@ public class ToggleDefinitionAutoConfigurationTest {
     }
 
     @Test
-    public void shouldLoadFeatureToggleRepositoryBean() {
+    public void shouldLoadToggleRepositoryBean() {
         load(EmptyConfiguration.class, "toggle.abc.r1.enabled=true", "toggle.xyz.r2.enabled=false");
         ToggleRepository toggleRepository = this.context.getBean(ToggleRepository.class);
         assertThat(toggleRepository).isNotNull();
@@ -34,20 +34,20 @@ public class ToggleDefinitionAutoConfigurationTest {
     }
 
     @Test
-    public void shouldLoadFeatureToggleDeciderBean() {
+    public void shouldLoadToggleDeciderBean() {
         load(EmptyConfiguration.class, "toggle.abc.r1.enabled=true", "toggle.xyz.r2.enabled=false");
-        ToggleDecider featureToggleDecider = this.context.getBean(ToggleDecider.class);
-        assertThat(featureToggleDecider).isNotNull();
-        assertThat(featureToggleDecider.isToggleOn("abc.r1")).isTrue();
-        assertThat(featureToggleDecider.isToggleOff("xyz.r2")).isTrue();
+        ToggleDecider toggleDecider = this.context.getBean(ToggleDecider.class);
+        assertThat(toggleDecider).isNotNull();
+        assertThat(toggleDecider.isToggleOn("abc.r1")).isTrue();
+        assertThat(toggleDecider.isToggleOff("xyz.r2")).isTrue();
         assertThat(this.context.getBeansOfType(ToggleDecider.class)).size().isEqualTo(1);
     }
 
     @Test
-    public void shouldLoadFeatureFeatureConfigBean() {
+    public void shouldLoadToggleDefinitionProviderBean() {
         load(EmptyConfiguration.class);
-        ToggleDefinitionProvider featureConfig = this.context.getBean(ToggleDefinitionProvider.class);
-        assertThat(featureConfig.getToggleDefinitions().size()).isEqualTo(2);
+        ToggleDefinitionProvider toggleDefinitionProvider = this.context.getBean(ToggleDefinitionProvider.class);
+        assertThat(toggleDefinitionProvider.getToggleDefinitions().size()).isEqualTo(2);
     }
 
     @Configuration
