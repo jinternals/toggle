@@ -1,6 +1,5 @@
 package com.jinternals.toggle.core.decider;
 
-import com.jinternals.toggle.api.decider.ToggleDecider;
 import com.jinternals.toggle.core.repository.ToggleRepository;
 
 

@@ -13,7 +13,7 @@ import java.io.File;
 import static java.lang.String.format;
 import static org.junit.Assert.*;
 
-@Ignore
+
 public class ToggleDefinitionGeneratorTest {
 
     @Rule

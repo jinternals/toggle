@@ -1,75 +1,79 @@
 package com.jinternals.toggle.test;
 
-import com.jinternals.toggle.test.rules.ToggleRule;
+import com.jinternals.toggle.core.decider.ToggleDecider;
+import com.jinternals.toggle.test.rules.ToggleExtension;
 import com.jinternals.toggle.test.rules.annotations.GivenToggle;
-import org.junit.Assert;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import static com.jinternals.toggle.test.ToggleValue.FALSE;
 import static com.jinternals.toggle.test.ToggleValue.TRUE;
+import static org.assertj.core.api.Assertions.assertThat;
 
+@ExtendWith(ToggleExtension.class)
 public class ToggleDefinitionRuleTest {
 
-    @Rule
-    public ToggleRule toggleRule = new ToggleRule();
+
 
     @Test
     @GivenToggle(name = "SOME.TOGGLE1", value = TRUE)
     @GivenToggle(name = "SOME.TOGGLE2", value = TRUE)
-    public void shouldTestMultipleToggleIsEnabled() {
+    public void shouldTestMultipleToggleIsEnabled(ToggleDecider toggleDecider) {
 
-        Boolean toggle1On = toggleRule.getToggleDecider().isToggleOn("SOME.TOGGLE1");
-        Boolean toggle1OFF = toggleRule.getToggleDecider().isToggleOff("SOME.TOGGLE1");
-        Boolean toggle2On = toggleRule.getToggleDecider().isToggleOn("SOME.TOGGLE2");
-        Boolean toggle2OFF = toggleRule.getToggleDecider().isToggleOff("SOME.TOGGLE2");
+        Boolean toggle1On = toggleDecider.isToggleOn("SOME.TOGGLE1");
+        Boolean toggle1OFF = toggleDecider.isToggleOff("SOME.TOGGLE1");
+        Boolean toggle2On = toggleDecider.isToggleOn("SOME.TOGGLE2");
+        Boolean toggle2OFF = toggleDecider.isToggleOff("SOME.TOGGLE2");
 
-        Assert.assertTrue(toggle1On);
-        Assert.assertFalse(toggle1OFF);
+        assertThat(toggle1On).isTrue();
+        assertThat(toggle1OFF).isFalse();
 
-        Assert.assertTrue(toggle2On);
-        Assert.assertFalse(toggle2OFF);
+        assertThat(toggle2On).isTrue();
+        assertThat(toggle2OFF).isFalse();
+
     }
 
     @Test
     @GivenToggle(name = "SOME.TOGGLE1", value = FALSE)
     @GivenToggle(name = "SOME.TOGGLE2", value = FALSE)
-    public void shouldTestMultipleToggleIsDisabled() {
-        Boolean toggle1On = toggleRule.getToggleDecider().isToggleOn("SOME.TOGGLE1");
-        Boolean toggle1OFF = toggleRule.getToggleDecider().isToggleOff("SOME.TOGGLE1");
-        Boolean toggle2On = toggleRule.getToggleDecider().isToggleOn("SOME.TOGGLE2");
-        Boolean toggle2OFF = toggleRule.getToggleDecider().isToggleOff("SOME.TOGGLE2");
+    public void shouldTestMultipleToggleIsDisabled(ToggleDecider toggleDecider) {
+        Boolean toggle1On = toggleDecider.isToggleOn("SOME.TOGGLE1");
+        Boolean toggle1OFF = toggleDecider.isToggleOff("SOME.TOGGLE1");
+        Boolean toggle2On = toggleDecider.isToggleOn("SOME.TOGGLE2");
+        Boolean toggle2OFF = toggleDecider.isToggleOff("SOME.TOGGLE2");
 
-        Assert.assertFalse(toggle1On);
-        Assert.assertTrue(toggle1OFF);
+        assertThat(toggle1On).isFalse();
+        assertThat(toggle1OFF).isTrue();
 
-        Assert.assertFalse(toggle2On);
-        Assert.assertTrue(toggle2OFF);
+        assertThat(toggle2On).isFalse();
+        assertThat(toggle2OFF).isTrue();
+
     }
 
     @Test
     @GivenToggle(name = "SOME.TOGGLE1", value = TRUE)
     @GivenToggle(name = "SOME.TOGGLE2", value = FALSE)
-    public void shouldTestMultipleToggleIsEnabledAndDisabled() {
-        Boolean toggle1On = toggleRule.getToggleDecider().isToggleOn("SOME.TOGGLE1");
-        Boolean toggle1OFF = toggleRule.getToggleDecider().isToggleOff("SOME.TOGGLE1");
-        Boolean toggle2On = toggleRule.getToggleDecider().isToggleOn("SOME.TOGGLE2");
-        Boolean toggle2OFF = toggleRule.getToggleDecider().isToggleOff("SOME.TOGGLE2");
+    public void shouldTestMultipleToggleIsEnabledAndDisabled(ToggleDecider toggleDecider) {
+        Boolean toggle1On = toggleDecider.isToggleOn("SOME.TOGGLE1");
+        Boolean toggle1OFF = toggleDecider.isToggleOff("SOME.TOGGLE1");
+        Boolean toggle2On = toggleDecider.isToggleOn("SOME.TOGGLE2");
+        Boolean toggle2OFF = toggleDecider.isToggleOff("SOME.TOGGLE2");
 
-        Assert.assertTrue(toggle1On);
-        Assert.assertFalse(toggle1OFF);
+        assertThat(toggle1On).isTrue();
+        assertThat(toggle1OFF).isFalse();
 
-        Assert.assertFalse(toggle2On);
-        Assert.assertTrue(toggle2OFF);
+        assertThat(toggle2On).isFalse();
+        assertThat(toggle2OFF).isTrue();
     }
 
     @Test
     @GivenToggle(name = "SOME.TOGGLE1", value = TRUE)
-    public void shouldTestToggleIsEnabled() {
-        Boolean toggle1On = toggleRule.getToggleDecider().isToggleOn("SOME.TOGGLE1");
-        Boolean toggle1OFF = toggleRule.getToggleDecider().isToggleOff("SOME.TOGGLE1");
+    public void shouldTestToggleIsEnabled(ToggleDecider toggleDecider) {
+        Boolean toggle1On = toggleDecider.isToggleOn("SOME.TOGGLE1");
+        Boolean toggle1OFF = toggleDecider.isToggleOff("SOME.TOGGLE1");
 
-        Assert.assertTrue(toggle1On);
-        Assert.assertFalse(toggle1OFF);
+        assertThat(toggle1On).isTrue();
+        assertThat(toggle1OFF).isFalse();
+
     }
 }

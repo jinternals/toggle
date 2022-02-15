@@ -1,6 +1,6 @@
 package com.jinternals.toggle.generator.plugin.code.generator;
 
-import com.jinternals.toggle.core.defination.parser.ToggleDefinitions;
+import com.jinternals.toggle.core.definition.ToggleDefinitions;
 
 import java.io.File;
 

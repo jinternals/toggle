@@ -12,32 +12,28 @@
     <artifactId>jinternals-toggle-generator-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
 
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <org.apache.maven.plugin-tools.version>3.4</org.apache.maven.plugin-tools.version>
-        <maven.version>3.3.9</maven.version>
+        <maven.version>3.6.3</maven.version>
+        <maven-plugin-testing-harness.version>3.3.0</maven-plugin-testing-harness.version>
+        <maven-plugin-annotations.version>3.6.0</maven-plugin-annotations.version>
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>com.jinternals.toggle</groupId>
             <artifactId>jinternals-toggle-core</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-yaml</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.squareup</groupId>
             <artifactId>javapoet</artifactId>
@@ -45,52 +41,48 @@
 
         <dependency>
             <groupId>org.apache.maven.plugin-tools</groupId>
-            <artifactId>maven-plugin-tools-api</artifactId>
-            <version>${org.apache.maven.plugin-tools.version}</version>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>${maven-plugin-annotations.version}</version>
+            <scope>provided</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.maven.plugin-tools</groupId>
-            <artifactId>maven-plugin-tools-annotations</artifactId>
-            <version>${org.apache.maven.plugin-tools.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>org.apache.maven</groupId>
-            <artifactId>maven-artifact</artifactId>
+            <artifactId>maven-plugin-api</artifactId>
             <version>${maven.version}</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
-        <dependency>
-            <groupId>org.eclipse.sisu</groupId>
-            <artifactId>org.eclipse.sisu.plexus</artifactId>
-            <version>0.3.3</version>
-        </dependency>
-
-        <!-- THIS is the important part -->
-        <dependency>
-            <groupId>org.apache.maven.plugin-testing</groupId>
-            <artifactId>maven-plugin-testing-harness</artifactId>
-            <version>3.3.0</version>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-core</artifactId>
             <version>${maven.version}</version>
-            <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-artifact</artifactId>
+            <version>${maven.version}</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-compat</artifactId>
             <version>${maven.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugin-testing</groupId>
+            <artifactId>maven-plugin-testing-harness</artifactId>
+            <scope>test</scope>
+            <version>${maven-plugin-testing-harness.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <!-- END of the important part -->
     </dependencies>
 
 
@@ -103,10 +95,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>${org.apache.maven.plugin-tools.version}</version>
+                <version>3.6.0</version>
                 <configuration>
-                    <goalPrefix>jinternals-toggle-generator</goalPrefix>
-                    <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+                    <goalPrefix>ofs-toggle-generator</goalPrefix>
                 </configuration>
                 <executions>
                     <execution>

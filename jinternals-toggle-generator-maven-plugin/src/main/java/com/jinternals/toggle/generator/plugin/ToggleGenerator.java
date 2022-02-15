@@ -1,6 +1,6 @@
 package com.jinternals.toggle.generator.plugin;
 
-import com.jinternals.toggle.core.defination.parser.ToggleDefinitions;
+import com.jinternals.toggle.core.definition.ToggleDefinitions;
 import com.jinternals.toggle.generator.plugin.exception.ToggleGeneratorException;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -10,9 +10,8 @@ import org.apache.maven.project.MavenProject;
 
 import java.io.File;
 
-import static com.jinternals.toggle.api.constants.ToggleConstants.TOGGLE_FILE_NAME;
-import static com.jinternals.toggle.generator.plugin.factory.Factory.toggleCodeGenerator;
-import static com.jinternals.toggle.generator.plugin.factory.Factory.toggleDefinitionParser;
+import static com.jinternals.toggle.core.constants.ToggleConstants.TOGGLE_FILE_NAME;
+import static com.jinternals.toggle.generator.plugin.factory.Factory.*;
 import static java.io.File.separatorChar;
 
 @Mojo(name = "generate")
@@ -50,17 +49,29 @@ public class ToggleGenerator extends AbstractMojo {
 
         getLog().info("ToggleDefinitions : " + toggleDefinitions);
 
+        generateCode(toggleDefinitions);
+        generateMetadata(toggleDefinitions);
+
+    }
+
+    private void generateMetadata(ToggleDefinitions toggleDefinitions) {
+        File generateCodeOutputDirectory = new File(this.outputDirectory.toString() + separatorChar + "/classes/META-INF");
+        springMetadataGenerator()
+                .generate(toggleDefinitions, packageName, generateCodeOutputDirectory);
+
+        getLog().info("outputDirectory " + generateCodeOutputDirectory);
+    }
+
+    private void generateCode(ToggleDefinitions toggleDefinitions) {
         File generateCodeOutputDirectory = new File(this.outputDirectory.toString() + separatorChar + "/generated-sources/java");
         toggleCodeGenerator()
                 .generate(toggleDefinitions, packageName, generateCodeOutputDirectory);
 
 
-        getLog().info("Filename " + fileName);
         getLog().info("outputDirectory " + this.outputDirectory);
         getLog().info("sourceDirectory " + sourceDirectory);
 
         project.addCompileSourceRoot(generateCodeOutputDirectory.getPath());
-
     }
 
 

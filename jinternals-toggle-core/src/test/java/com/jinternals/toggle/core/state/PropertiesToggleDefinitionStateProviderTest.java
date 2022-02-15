@@ -1,11 +1,12 @@
 package com.jinternals.toggle.core.state;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Properties;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class PropertiesToggleDefinitionStateProviderTest {
 
@@ -13,7 +14,7 @@ public class PropertiesToggleDefinitionStateProviderTest {
 
     private Properties properties = new Properties ();
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
 
         this.properties.put("toggle.abc.enabled","true");
@@ -28,8 +29,9 @@ public class PropertiesToggleDefinitionStateProviderTest {
         boolean abcToggleState = this.propertiesToggleStateProvider.getState("abc");
         boolean xyzToggleState = this.propertiesToggleStateProvider.getState("xyz");
 
-        assertEquals(true,abcToggleState);
-        assertEquals(false,xyzToggleState);
+        assertThat(abcToggleState).isTrue();
+        assertThat(xyzToggleState).isFalse();
+
 
     }
 }

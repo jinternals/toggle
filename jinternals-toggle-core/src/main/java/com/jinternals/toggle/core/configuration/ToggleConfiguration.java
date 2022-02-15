@@ -3,9 +3,9 @@ package com.jinternals.toggle.core.configuration;
 import com.jinternals.toggle.core.decider.DefaultToggleDecider;
 import com.jinternals.toggle.core.repository.ToggleRepository;
 import com.jinternals.toggle.core.repository.DefaultToggleRepository;
-import com.jinternals.toggle.api.decider.ToggleDecider;
-import com.jinternals.toggle.api.definition.ToggleDefinitionProvider;
-import com.jinternals.toggle.api.state.ToggleStateProvider;
+import com.jinternals.toggle.core.decider.ToggleDecider;
+import com.jinternals.toggle.core.definition.ToggleDefinitionProvider;
+import com.jinternals.toggle.core.state.ToggleStateProvider;
 
 public class ToggleConfiguration {
 

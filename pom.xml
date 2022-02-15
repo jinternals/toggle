@@ -14,25 +14,20 @@
         <java.source.version>1.8</java.source.version>
         <java.target.version>1.8</java.target.version>
 
-        <spring.boot.version>2.0.4.RELEASE</spring.boot.version>
+        <spring.boot.version>2.6.3</spring.boot.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <junit.version>4.12</junit.version>
-
-        <guava.version>23.5-jre</guava.version>
+        <guava.version>31.0.1-jre</guava.version>
 
         <javapoet.version>1.9.0</javapoet.version>
     </properties>
 
     <modules>
-        <module>jinternals-toggle-api</module>
         <module>jinternals-toggle-core</module>
-        <module>jinternals-toggle-spring</module>
+        <module>jinternals-toggle-autoconfigure</module>
         <module>jinternals-toggle-starter</module>
-        <module>jinternals-toggle-actuator</module>
         <module>jinternals-toggle-generator-maven-plugin</module>
-        <module>jinternals-toggle-definition-parser</module>
         <module>jinternals-toggle-test</module>
     </modules>
 
@@ -60,19 +55,6 @@
             </dependency>
 
             <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.jinternals.toggle</groupId>
-                <artifactId>jinternals-toggle-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>com.jinternals.toggle</groupId>
                 <artifactId>jinternals-toggle-core</artifactId>
                 <version>${project.version}</version>
@@ -86,7 +68,7 @@
 
             <dependency>
                 <groupId>com.jinternals.toggle</groupId>
-                <artifactId>jinternals-toggle-spring</artifactId>
+                <artifactId>jinternals-toggle-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

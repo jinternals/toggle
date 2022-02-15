@@ -1,9 +1,9 @@
 package com.jinternals.toggle.core.repository;
 
 
-import com.jinternals.toggle.api.definition.ToggleDefinition;
-import com.jinternals.toggle.api.definition.ToggleDefinitionProvider;
-import com.jinternals.toggle.api.state.ToggleStateProvider;
+import com.jinternals.toggle.core.definition.ToggleDefinition;
+import com.jinternals.toggle.core.definition.ToggleDefinitionProvider;
+import com.jinternals.toggle.core.state.ToggleStateProvider;
 
 import java.util.Map;
 import java.util.Set;

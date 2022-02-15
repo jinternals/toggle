@@ -1,7 +1,5 @@
 package com.jinternals.toggle.core.state;
 
-import com.jinternals.toggle.api.state.AbstractToggleStateProvider;
-
 import java.util.Properties;
 
 import static java.lang.Boolean.parseBoolean;

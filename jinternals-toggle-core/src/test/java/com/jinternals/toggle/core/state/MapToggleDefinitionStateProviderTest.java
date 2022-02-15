@@ -1,12 +1,15 @@
 package com.jinternals.toggle.core.state;
 
-import org.junit.Before;
-import org.junit.Test;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class MapToggleDefinitionStateProviderTest {
 
@@ -14,7 +17,7 @@ public class MapToggleDefinitionStateProviderTest {
 
     private Map<String,Boolean> toogleState = new HashMap<>();
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
 
         this.toogleState.put("toggle.toggle1.enabled",true);
@@ -28,7 +31,8 @@ public class MapToggleDefinitionStateProviderTest {
         boolean toggle1State = this.mapToggleStateProvider.getState("toggle1");
         boolean toggle2State = this.mapToggleStateProvider.getState("toggle2");
 
-        assertEquals(true,toggle1State);
-        assertEquals(false,toggle2State);
+        assertThat(toggle1State).isTrue();
+        assertThat(toggle2State).isFalse();
+
     }
 }
