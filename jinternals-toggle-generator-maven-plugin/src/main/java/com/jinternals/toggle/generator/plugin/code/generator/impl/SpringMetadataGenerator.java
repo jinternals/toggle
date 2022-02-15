@@ -42,7 +42,6 @@ public class SpringMetadataGenerator implements ToggleCodeGenerator {
 
             mapper.writerWithDefaultPrettyPrinter().writeValue(resultFile, springMetadata);
         } catch (IOException e) {
-            e.printStackTrace();
             LOGGER.error(e.getMessage(), e);
         }
 
