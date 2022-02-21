@@ -1,4 +1,4 @@
-package com.jinternals.toggle.core.decider;
+package com.jinternals.toggle.core.services;
 
 import com.jinternals.toggle.core.repository.ToggleRepository;
 import org.junit.jupiter.api.BeforeEach;

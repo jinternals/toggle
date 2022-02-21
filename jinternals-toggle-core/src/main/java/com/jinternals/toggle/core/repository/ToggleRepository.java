@@ -11,7 +11,7 @@ public interface ToggleRepository {
 
     public Set<String> getAllEnabledToggles();
 
-    public Boolean isToggleOn(String key);
+    public boolean isToggleOn(String key);
 
     public boolean isDefined(String key);
 

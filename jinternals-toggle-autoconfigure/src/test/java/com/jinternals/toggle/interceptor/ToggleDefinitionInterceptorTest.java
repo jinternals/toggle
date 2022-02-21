@@ -1,7 +1,7 @@
 package com.jinternals.toggle.interceptor;
 
 import com.jinternals.toggle.annotation.Toggle;
-import com.jinternals.toggle.core.decider.ToggleService;
+import com.jinternals.toggle.core.services.ToggleService;
 import com.jinternals.toggle.test.rules.ToggleExtension;
 import com.jinternals.toggle.test.rules.annotations.GivenToggle;
 import org.junit.jupiter.api.BeforeEach;

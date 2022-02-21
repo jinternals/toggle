@@ -1,7 +1,7 @@
 package com.jinternals.toggle.interceptor;
 
 import com.jinternals.toggle.annotation.Toggle;
-import com.jinternals.toggle.core.decider.ToggleService;
+import com.jinternals.toggle.core.services.ToggleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.method.HandlerMethod;

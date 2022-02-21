@@ -29,7 +29,7 @@ public class DefaultToggleRepository implements ToggleRepository {
             toggles = toggleDefinitionProvider
                     .getToggleDefinitions()
                     .stream()
-                    .collect(toMap(toggle -> toggle.getName(), toggle -> toggle));
+                    .collect(toMap(ToggleDefinition::getName, toggle -> toggle));
         }
         return toggles;
     }
@@ -42,7 +42,7 @@ public class DefaultToggleRepository implements ToggleRepository {
                 .collect(toSet());
     }
 
-    public Boolean isToggleOn(String key) {
+    public boolean isToggleOn(String key) {
         return toggleStatus().get(key);
     }
 

@@ -1,6 +1,6 @@
 package com.jinternals.toggle.validation.constraints;
 
-import com.jinternals.toggle.core.decider.ToggleService;
+import com.jinternals.toggle.core.services.ToggleService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;

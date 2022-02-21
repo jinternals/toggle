@@ -1,9 +1,9 @@
 package com.jinternals.toggle.core.configuration;
 
-import com.jinternals.toggle.core.decider.DefaultService;
+import com.jinternals.toggle.core.services.DefaultService;
 import com.jinternals.toggle.core.repository.ToggleRepository;
 import com.jinternals.toggle.core.repository.DefaultToggleRepository;
-import com.jinternals.toggle.core.decider.ToggleService;
+import com.jinternals.toggle.core.services.ToggleService;
 import com.jinternals.toggle.core.definition.ToggleDefinitionProvider;
 import com.jinternals.toggle.core.state.ToggleStateProvider;
 

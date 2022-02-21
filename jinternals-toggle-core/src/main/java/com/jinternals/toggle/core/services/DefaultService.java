@@ -1,4 +1,4 @@
-package com.jinternals.toggle.core.decider;
+package com.jinternals.toggle.core.services;
 
 import com.jinternals.toggle.core.repository.ToggleRepository;
 
@@ -12,12 +12,12 @@ public class DefaultService implements ToggleService {
     }
 
     @Override
-    public Boolean isToggleOn(String toggle) {
+    public boolean isToggleOn(String toggle) {
         return toggleRepository.isToggleOn(toggle);
     }
 
     @Override
-    public Boolean isToggleOff(String toggle) {
+    public boolean isToggleOff(String toggle) {
         return !toggleRepository.isToggleOn(toggle);
     }
 

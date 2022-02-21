@@ -10,12 +10,14 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import static com.jinternals.toggle.Constants.TOGGLE_CONFIG_PREFIX;
+
 /**
  * Created by mradul on 31/01/17.
  */
 @Configuration
 @AutoConfigureAfter(ToggleAutoConfiguration.class)
-@ConditionalOnProperty(prefix = "jinternals.toggles", name="enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(prefix = TOGGLE_CONFIG_PREFIX, name="enabled", havingValue = "true", matchIfMissing = true)
 public class ToggleEndpointAutoConfiguration {
 
     @Bean

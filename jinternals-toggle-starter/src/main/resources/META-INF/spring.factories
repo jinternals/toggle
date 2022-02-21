@@ -2,3 +2,7 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.jinternals.toggle.autoconfig.ToggleAutoConfiguration,\
 com.jinternals.toggle.autoconfig.ToggleInterceptorAutoConfiguration,\
 com.jinternals.toggle.autoconfig.ToggleEndpointAutoConfiguration
+
+
+org.springframework.boot.diagnostics.FailureAnalyzer=\
+  com.jinternals.toggle.analyzers.ToggleNotDefinedExceptionAnalyzer

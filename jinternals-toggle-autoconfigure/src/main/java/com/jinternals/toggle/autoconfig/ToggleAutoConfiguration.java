@@ -1,8 +1,8 @@
 package com.jinternals.toggle.autoconfig;
 
 import com.jinternals.toggle.autoconfig.properties.ToggleConfigurationProperties;
-import com.jinternals.toggle.core.decider.DefaultService;
-import com.jinternals.toggle.core.decider.ToggleService;
+import com.jinternals.toggle.core.services.DefaultService;
+import com.jinternals.toggle.core.services.ToggleService;
 import com.jinternals.toggle.defination.ClasspathToggleDefinitionProvider;
 import com.jinternals.toggle.core.definition.ToggleDefinitionParser;
 import com.jinternals.toggle.core.definition.impl.YamlToggleDefinitionParser;
@@ -20,6 +20,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 
+import static com.jinternals.toggle.Constants.TOGGLE_CONFIG_PREFIX;
+
 
 /**
  * Created by mradul on 31/01/17.
@@ -27,7 +29,7 @@ import org.springframework.core.env.Environment;
 @Configuration
 @EnableConfigurationProperties(ToggleConfigurationProperties.class)
 @ConditionalOnClass({ToggleService.class, ToggleRepository.class, ToggleDefinitionParser.class})
-@ConditionalOnProperty(prefix = "jinternals.toggles", name="enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(prefix =  TOGGLE_CONFIG_PREFIX, name="enabled", havingValue = "true", matchIfMissing = true)
 public class ToggleAutoConfiguration {
 
 
