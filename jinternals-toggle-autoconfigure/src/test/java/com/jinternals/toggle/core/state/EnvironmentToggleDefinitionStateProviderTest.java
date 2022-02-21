@@ -19,13 +19,13 @@ public class EnvironmentToggleDefinitionStateProviderTest {
     private Environment environment;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    public void setUp() {
         provider = new EnvironmentToggleStateProvider(environment);
     }
 
     @Test
-    public void shouldReturnTrueIfToggleIsSetTrue() {
-        when(environment.getProperty("toggle.some-toggle.enabled")).thenReturn("true");
+    void shouldReturnTrueIfToggleIsSetTrue() {
+        when(environment.getProperty("toggle.some-toggle.enabled", Boolean.class, false)).thenReturn(true);
 
         boolean result = provider.getState("some-toggle");
 
@@ -34,19 +34,11 @@ public class EnvironmentToggleDefinitionStateProviderTest {
 
     @Test
     public void shouldReturnFalseIfToggleIsSetFalse() {
-        when(environment.getProperty("toggle.some-toggle.enabled")).thenReturn("false");
+        when(environment.getProperty("toggle.some-toggle.enabled", Boolean.class, false)).thenReturn(false);
 
         boolean result = provider.getState("some-toggle");
 
         assertThat(result).isFalse();
     }
 
-    @Test
-    public void shouldReturnFalseIfToggleIsNotDefine() {
-        when(environment.getProperty("toggle.some-toggle.enabled")).thenReturn(null);
-
-        boolean result = provider.getState("some-toggle");
-
-        assertThat(result).isFalse();
-    }
 }

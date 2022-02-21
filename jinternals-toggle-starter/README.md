@@ -18,14 +18,14 @@ Spring bean and controller level methods:
 Code level toggle conditions:
     
             @Autowire
-            private ToggleDecider toggleDecider;
+            private ToggleDecider toggleService;
     
                
-            if(toggleDecider.isToggleOn("some.toggle"))
+            if(toggleService.isToggleOn("some.toggle"))
             {
                        ...
             }
-            if(toggleDecider.isToggleOff("some.toggle"))
+            if(toggleService.isToggleOff("some.toggle"))
             {
                        ...
             }

@@ -1,7 +1,7 @@
 package com.jinternals.toggle.test.rules;
 
 
-import com.jinternals.toggle.core.decider.ToggleDecider;
+import com.jinternals.toggle.core.decider.ToggleService;
 import com.jinternals.toggle.test.rules.annotations.GivenToggle;
 import com.jinternals.toggle.test.rules.annotations.GivenToggles;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -17,7 +17,7 @@ public class ToggleExtension implements ParameterResolver {
     @Override
     public boolean supportsParameter(ParameterContext parameterContext,
                                      ExtensionContext extensionContext) {
-        return parameterContext.getParameter().getType() == ToggleDecider.class;
+        return parameterContext.getParameter().getType() == ToggleService.class;
     }
 
     @Override
@@ -28,16 +28,16 @@ public class ToggleExtension implements ParameterResolver {
 
 
 
-    private ToggleDecider buildDeciderToggleMock(GivenToggle[] givenToggles) {
-        ToggleDecider toggleDecider = Mockito.mock(ToggleDecider.class);
+    private ToggleService buildDeciderToggleMock(GivenToggle[] givenToggles) {
+        ToggleService toggleService = Mockito.mock(ToggleService.class);
 
         for (GivenToggle givenToggle: givenToggles) {
-            when(toggleDecider.isToggleOn(givenToggle.name())).thenReturn(givenToggle.value().getValue());
-            when(toggleDecider.isToggleOff(givenToggle.name())).thenReturn(!givenToggle.value().getValue());
-            when(toggleDecider.isToggleDefined(givenToggle.name())).thenReturn(givenToggle.defined().getValue());
+            when(toggleService.isToggleOn(givenToggle.name())).thenReturn(givenToggle.value().getValue());
+            when(toggleService.isToggleOff(givenToggle.name())).thenReturn(!givenToggle.value().getValue());
+            when(toggleService.isToggleDefined(givenToggle.name())).thenReturn(givenToggle.defined().getValue());
         }
 
-        return  toggleDecider;
+        return toggleService;
     }
 
     private GivenToggle[] getGivenToggles(ParameterContext description) {

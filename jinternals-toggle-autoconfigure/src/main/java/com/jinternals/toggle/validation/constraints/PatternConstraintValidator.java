@@ -1,6 +1,6 @@
 package com.jinternals.toggle.validation.constraints;
 
-import com.jinternals.toggle.core.decider.ToggleDecider;
+import com.jinternals.toggle.core.decider.ToggleService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
@@ -18,7 +18,7 @@ public class PatternConstraintValidator implements ConstraintValidator<PatternCo
     private Pattern pattern;
 
     @Autowired
-    private ToggleDecider toggleDecider;
+    private ToggleService toggleService;
 
     @Override
     public void initialize(PatternConstraint required) {
@@ -30,7 +30,7 @@ public class PatternConstraintValidator implements ConstraintValidator<PatternCo
     @Override
     public boolean isValid(String value, ConstraintValidatorContext constraintValidatorContext) {
 
-        if(toggleDecider.isToggleOn(toggleName) == expectedToBeOn){
+        if(toggleService.isToggleOn(toggleName) == expectedToBeOn){
             return nonNull(value) && pattern.matcher(value).matches();
         }
 

@@ -1,6 +1,6 @@
 package com.jinternals.toggle.validation.constraints;
 
-import com.jinternals.toggle.core.decider.ToggleDecider;
+import com.jinternals.toggle.core.decider.ToggleService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
@@ -14,7 +14,7 @@ public class RequiredConstraintValidator implements ConstraintValidator<Required
     private boolean expectedToBeOn;
 
     @Autowired
-    private ToggleDecider toggleDecider;
+    private ToggleService toggleService;
 
     @Override
     public void initialize(RequiredConstraint requiredConstraint) {
@@ -25,7 +25,7 @@ public class RequiredConstraintValidator implements ConstraintValidator<Required
     @Override
     public boolean isValid(Object obj, ConstraintValidatorContext constraintValidatorContext) {
 
-        if(toggleDecider.isToggleOn(toggleName) == expectedToBeOn){
+        if(toggleService.isToggleOn(toggleName) == expectedToBeOn){
             return nonNull(obj);
         }
 

@@ -3,11 +3,11 @@ package com.jinternals.toggle.core.decider;
 import com.jinternals.toggle.core.repository.ToggleRepository;
 
 
-public class DefaultToggleDecider implements ToggleDecider {
+public class DefaultService implements ToggleService {
 
     private ToggleRepository toggleRepository;
 
-    public DefaultToggleDecider(ToggleRepository toggleRepository) {
+    public DefaultService(ToggleRepository toggleRepository) {
         this.toggleRepository = toggleRepository;
     }
 

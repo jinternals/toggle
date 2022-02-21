@@ -1,7 +1,7 @@
 package com.jinternals.toggle.interceptor;
 
 import com.jinternals.toggle.annotation.Toggle;
-import com.jinternals.toggle.core.decider.ToggleDecider;
+import com.jinternals.toggle.core.decider.ToggleService;
 import com.jinternals.toggle.test.rules.ToggleExtension;
 import com.jinternals.toggle.test.rules.annotations.GivenToggle;
 import org.junit.jupiter.api.BeforeEach;
@@ -55,9 +55,9 @@ public class ToggleDefinitionInterceptorTest {
 
     @Test
     @GivenToggle(name = "some-name", value = TRUE)
-    public void shouldReturnTrueIfMethodIsAnnotatedAndToggleIsOn(ToggleDecider toggleDecider) throws Exception {
+    public void shouldReturnTrueIfMethodIsAnnotatedAndToggleIsOn(ToggleService toggleService) throws Exception {
 
-        ToggleInterceptor interceptor = new ToggleInterceptor(toggleDecider);
+        ToggleInterceptor interceptor = new ToggleInterceptor(toggleService);
 
         boolean result = interceptor.preHandle(request, response, handlerMethod);
 
@@ -67,9 +67,9 @@ public class ToggleDefinitionInterceptorTest {
 
     @Test
     @GivenToggle(name = "some-name", value = FALSE)
-    public void shouldReturnFalseIfMethodIsAnnotatedAndToggleIsOff(ToggleDecider toggleDecider) throws Exception {
+    public void shouldReturnFalseIfMethodIsAnnotatedAndToggleIsOff(ToggleService toggleService) throws Exception {
 
-        ToggleInterceptor interceptor = new ToggleInterceptor(toggleDecider);
+        ToggleInterceptor interceptor = new ToggleInterceptor(toggleService);
 
         boolean result = interceptor.preHandle(request, response, handlerMethod);
 
@@ -80,10 +80,10 @@ public class ToggleDefinitionInterceptorTest {
 
     @Test
     @GivenToggle(name = "some-name", value = FALSE)
-    public void shouldReturnTrueIfMethodIsNotAnnotated(ToggleDecider toggleDecider) throws Exception {
+    public void shouldReturnTrueIfMethodIsNotAnnotated(ToggleService toggleService) throws Exception {
         when(handlerMethod.getMethodAnnotation(Toggle.class)).thenReturn(null);
 
-        ToggleInterceptor interceptor = new ToggleInterceptor(toggleDecider);
+        ToggleInterceptor interceptor = new ToggleInterceptor(toggleService);
 
         boolean result = interceptor.preHandle(request, response, handlerMethod);
 
@@ -93,9 +93,9 @@ public class ToggleDefinitionInterceptorTest {
 
     @Test
     @GivenToggle(name = "some-name", value = FALSE, defined = FALSE)
-    public void shouldReturnFalseIfToggleIsNotDefined(ToggleDecider toggleDecider) throws Exception {
+    public void shouldReturnFalseIfToggleIsNotDefined(ToggleService toggleService) throws Exception {
 
-        ToggleInterceptor interceptor = new ToggleInterceptor(toggleDecider);
+        ToggleInterceptor interceptor = new ToggleInterceptor(toggleService);
 
         boolean result = interceptor.preHandle(request, response, handlerMethod);
 

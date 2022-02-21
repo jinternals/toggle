@@ -1,13 +1,13 @@
 package com.jinternals.toggle.autoconfig;
 
 import com.jinternals.toggle.autoconfig.properties.ToggleConfigurationProperties;
-import com.jinternals.toggle.core.decider.DefaultToggleDecider;
+import com.jinternals.toggle.core.decider.DefaultService;
+import com.jinternals.toggle.core.decider.ToggleService;
 import com.jinternals.toggle.defination.ClasspathToggleDefinitionProvider;
 import com.jinternals.toggle.core.definition.ToggleDefinitionParser;
 import com.jinternals.toggle.core.definition.impl.YamlToggleDefinitionParser;
 import com.jinternals.toggle.core.repository.ToggleRepository;
 import com.jinternals.toggle.core.repository.DefaultToggleRepository;
-import com.jinternals.toggle.core.decider.ToggleDecider;
 import com.jinternals.toggle.core.definition.ToggleDefinitionProvider;
 import com.jinternals.toggle.core.state.ToggleStateProvider;
 import com.jinternals.toggle.core.state.EnvironmentToggleStateProvider;
@@ -26,7 +26,7 @@ import org.springframework.core.env.Environment;
  */
 @Configuration
 @EnableConfigurationProperties(ToggleConfigurationProperties.class)
-@ConditionalOnClass({ToggleDecider.class, ToggleRepository.class, ToggleDefinitionParser.class})
+@ConditionalOnClass({ToggleService.class, ToggleRepository.class, ToggleDefinitionParser.class})
 @ConditionalOnProperty(prefix = "jinternals.toggles", name="enabled", havingValue = "true", matchIfMissing = true)
 public class ToggleAutoConfiguration {
 
@@ -61,8 +61,8 @@ public class ToggleAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public ToggleDecider toggleDecider(ToggleRepository toggleRepository) {
-        return new DefaultToggleDecider(toggleRepository);
+    public ToggleService toggleDecider(ToggleRepository toggleRepository) {
+        return new DefaultService(toggleRepository);
     }
 
 }

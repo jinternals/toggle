@@ -1,8 +1,8 @@
 package com.jinternals.toggle.autoconfig;
 
+import com.jinternals.toggle.core.decider.ToggleService;
 import com.jinternals.toggle.interceptor.ToggleInterceptor;
 import com.jinternals.toggle.core.repository.ToggleRepository;
-import com.jinternals.toggle.core.decider.ToggleDecider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -22,11 +22,11 @@ import static org.springframework.boot.autoconfigure.condition.ConditionalOnWebA
 public class ToggleInterceptorAutoConfiguration implements WebMvcConfigurer {
 
     @Autowired
-    private ToggleDecider toggleDecider;
+    private ToggleService toggleService;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new ToggleInterceptor(toggleDecider));
+        registry.addInterceptor(new ToggleInterceptor(toggleService));
     }
 
 }

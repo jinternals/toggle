@@ -14,7 +14,7 @@ public class EnvironmentToggleStateProvider extends AbstractToggleStateProvider 
 
     @Override
     public boolean getToggleState(String toggle) {
-        return parseBoolean(environment.getProperty(toggle));
+        return environment.getProperty(toggle, Boolean.class, false);
     }
 
 }

@@ -2,7 +2,7 @@ package com.jinternals.toggle.autoconfig;
 
 
 import com.jinternals.toggle.core.repository.ToggleRepository;
-import com.jinternals.toggle.core.decider.ToggleDecider;
+import com.jinternals.toggle.core.decider.ToggleService;
 import com.jinternals.toggle.core.definition.ToggleDefinitionProvider;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -36,11 +36,11 @@ public class ToggleDefinitionAutoConfigurationTest {
     @Test
     public void shouldLoadToggleDeciderBean() {
         load(EmptyConfiguration.class, "toggle.abc.r1.enabled=true", "toggle.xyz.r2.enabled=false");
-        ToggleDecider toggleDecider = this.context.getBean(ToggleDecider.class);
-        assertThat(toggleDecider).isNotNull();
-        assertThat(toggleDecider.isToggleOn("abc.r1")).isTrue();
-        assertThat(toggleDecider.isToggleOff("xyz.r2")).isTrue();
-        assertThat(this.context.getBeansOfType(ToggleDecider.class)).size().isEqualTo(1);
+        ToggleService toggleService = this.context.getBean(ToggleService.class);
+        assertThat(toggleService).isNotNull();
+        assertThat(toggleService.isToggleOn("abc.r1")).isTrue();
+        assertThat(toggleService.isToggleOff("xyz.r2")).isTrue();
+        assertThat(this.context.getBeansOfType(ToggleService.class)).size().isEqualTo(1);
     }
 
     @Test

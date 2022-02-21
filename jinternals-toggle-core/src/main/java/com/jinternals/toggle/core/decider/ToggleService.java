@@ -1,6 +1,6 @@
 package com.jinternals.toggle.core.decider;
 
-public interface ToggleDecider {
+public interface ToggleService {
 
     Boolean isToggleOn(String toggle);
 
