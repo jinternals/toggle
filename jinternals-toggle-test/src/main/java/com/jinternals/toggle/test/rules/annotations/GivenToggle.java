@@ -11,6 +11,8 @@ import static com.jinternals.toggle.test.ToggleValue.TRUE;
 @Target({ElementType.METHOD})
 public @interface GivenToggle {
     String name() default "";
+
     ToggleValue value() default TRUE;
+
     ToggleValue defined() default TRUE;
 }

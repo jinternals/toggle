@@ -2,8 +2,8 @@ package com.jinternals.toggle.core.repository.impl;
 
 import com.jinternals.toggle.core.definition.ToggleDefinition;
 import com.jinternals.toggle.core.definition.ToggleDefinitionProvider;
-import com.jinternals.toggle.core.state.ToggleStateProvider;
 import com.jinternals.toggle.core.repository.DefaultToggleRepository;
+import com.jinternals.toggle.core.state.ToggleStateProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

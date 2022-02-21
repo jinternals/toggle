@@ -12,13 +12,13 @@ public class PropertiesToggleDefinitionStateProviderTest {
 
     private PropertiesToggleStateProvider propertiesToggleStateProvider;
 
-    private Properties properties = new Properties ();
+    private Properties properties = new Properties();
 
     @BeforeEach
     public void setUp() throws Exception {
 
-        this.properties.put("toggle.abc.enabled","true");
-        this.properties.put("toggle.xyz.enabled","false");
+        this.properties.put("toggle.abc.enabled", "true");
+        this.properties.put("toggle.xyz.enabled", "false");
 
         this.propertiesToggleStateProvider = new PropertiesToggleStateProvider(this.properties);
     }

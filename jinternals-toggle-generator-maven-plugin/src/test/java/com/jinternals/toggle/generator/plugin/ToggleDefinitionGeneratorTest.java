@@ -3,8 +3,6 @@ package com.jinternals.toggle.generator.plugin;
 import com.jinternals.toggle.generator.plugin.exception.ToggleGeneratorException;
 import org.apache.maven.plugin.testing.MojoRule;
 import org.apache.maven.plugin.testing.resources.TestResources;
-import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -28,8 +26,8 @@ public class ToggleDefinitionGeneratorTest {
         ToggleGenerator mojo = (ToggleGenerator) this.rule.lookupConfiguredMojo(loadPom("toggle-test"), "generate");
         assertNotNull(mojo);
 
-        assertEquals("toggles.yml",mojo.getFileName());
-        assertEquals("com.cloud.example.toggle",mojo.getPackageName());
+        assertEquals("toggles.yml", mojo.getFileName());
+        assertEquals("com.cloud.example.toggle", mojo.getPackageName());
         mojo.execute();
 
         String filePath = format("%s%s", mojo.getOutputDirectory().toString(), "/generated-sources/java/com/cloud/example/toggle/Toggles.java");
@@ -44,8 +42,8 @@ public class ToggleDefinitionGeneratorTest {
         ToggleGenerator mojo = (ToggleGenerator) this.rule.lookupConfiguredMojo(loadPom("invalid-toggle-test"), "generate");
         assertNotNull(mojo);
 
-        assertEquals("toggles.yml",mojo.getFileName());
-        assertEquals("com.cloud.example.toggle",mojo.getPackageName());
+        assertEquals("toggles.yml", mojo.getFileName());
+        assertEquals("com.cloud.example.toggle", mojo.getPackageName());
 
         mojo.execute();
 

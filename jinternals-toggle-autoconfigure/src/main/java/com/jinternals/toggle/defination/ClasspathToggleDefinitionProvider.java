@@ -1,8 +1,8 @@
 package com.jinternals.toggle.defination;
 
 import com.jinternals.toggle.core.definition.ToggleDefinition;
-import com.jinternals.toggle.core.definition.ToggleDefinitionProvider;
 import com.jinternals.toggle.core.definition.ToggleDefinitionParser;
+import com.jinternals.toggle.core.definition.ToggleDefinitionProvider;
 import com.jinternals.toggle.core.definition.ToggleDefinitions;
 import org.springframework.core.io.ClassPathResource;
 

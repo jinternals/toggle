@@ -44,7 +44,7 @@ class DefaultServiceTest {
     @Test
     void shouldVerifyToggleDefine() {
         Mockito.when(toggleRepository.isDefined("some-toggle")).thenReturn(true);
-        Boolean toggleDefined= toggleService.isToggleDefined("some-toggle");
+        Boolean toggleDefined = toggleService.isToggleDefined("some-toggle");
 
         assertThat(toggleDefined).isTrue();
         Mockito.verify(toggleRepository).isDefined("some-toggle");
@@ -53,7 +53,7 @@ class DefaultServiceTest {
     @Test
     void shouldVerifyToggleNotDefine() {
         Mockito.when(toggleRepository.isDefined("some-toggle")).thenReturn(false);
-        Boolean toggleDefined= toggleService.isToggleDefined("some-toggle");
+        Boolean toggleDefined = toggleService.isToggleDefined("some-toggle");
 
         assertThat(toggleDefined).isFalse();
         Mockito.verify(toggleRepository).isDefined("some-toggle");

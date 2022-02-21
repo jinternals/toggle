@@ -1,7 +1,7 @@
 package com.jinternals.toggle.core.definition.impl;
 
-import com.jinternals.toggle.core.definition.ToggleDefinitions;
 import com.jinternals.toggle.core.definition.ToggleDefinitionParser;
+import com.jinternals.toggle.core.definition.ToggleDefinitions;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;

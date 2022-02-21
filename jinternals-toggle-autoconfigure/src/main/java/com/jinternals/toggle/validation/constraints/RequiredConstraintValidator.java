@@ -25,7 +25,7 @@ public class RequiredConstraintValidator implements ConstraintValidator<Required
     @Override
     public boolean isValid(Object obj, ConstraintValidatorContext constraintValidatorContext) {
 
-        if(toggleService.isToggleOn(toggleName) == expectedToBeOn){
+        if (toggleService.isToggleOn(toggleName) == expectedToBeOn) {
             return nonNull(obj);
         }
 

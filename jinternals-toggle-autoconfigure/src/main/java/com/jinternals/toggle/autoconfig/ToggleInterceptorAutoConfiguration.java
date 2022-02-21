@@ -1,9 +1,8 @@
 package com.jinternals.toggle.autoconfig;
 
-import com.jinternals.toggle.Constants;
+import com.jinternals.toggle.core.repository.ToggleRepository;
 import com.jinternals.toggle.core.services.ToggleService;
 import com.jinternals.toggle.interceptor.ToggleInterceptor;
-import com.jinternals.toggle.core.repository.ToggleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -20,7 +19,7 @@ import static org.springframework.boot.autoconfigure.condition.ConditionalOnWebA
 @ConditionalOnWebApplication(type = SERVLET)
 @ConditionalOnBean({ToggleRepository.class})
 @AutoConfigureAfter(ToggleAutoConfiguration.class)
-@ConditionalOnProperty(prefix = TOGGLE_CONFIG_PREFIX, name="enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(prefix = TOGGLE_CONFIG_PREFIX, name = "enabled", havingValue = "true", matchIfMissing = true)
 public class ToggleInterceptorAutoConfiguration implements WebMvcConfigurer {
 
     @Autowired

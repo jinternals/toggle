@@ -2,8 +2,6 @@ package com.jinternals.toggle.core.state;
 
 import org.springframework.core.env.Environment;
 
-import static java.lang.Boolean.parseBoolean;
-
 public class EnvironmentToggleStateProvider extends AbstractToggleStateProvider {
 
     private Environment environment;

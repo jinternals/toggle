@@ -1,9 +1,9 @@
 package com.jinternals.toggle.autoconfig;
 
 
+import com.jinternals.toggle.core.definition.ToggleDefinitionProvider;
 import com.jinternals.toggle.core.repository.ToggleRepository;
 import com.jinternals.toggle.core.services.ToggleService;
-import com.jinternals.toggle.core.definition.ToggleDefinitionProvider;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.util.TestPropertyValues;

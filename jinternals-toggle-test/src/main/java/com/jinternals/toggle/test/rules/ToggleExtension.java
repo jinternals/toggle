@@ -27,11 +27,10 @@ public class ToggleExtension implements ParameterResolver {
     }
 
 
-
     private ToggleService buildDeciderToggleMock(GivenToggle[] givenToggles) {
         ToggleService toggleService = Mockito.mock(ToggleService.class);
 
-        for (GivenToggle givenToggle: givenToggles) {
+        for (GivenToggle givenToggle : givenToggles) {
             when(toggleService.isToggleOn(givenToggle.name())).thenReturn(givenToggle.value().getValue());
             when(toggleService.isToggleOff(givenToggle.name())).thenReturn(!givenToggle.value().getValue());
             when(toggleService.isToggleDefined(givenToggle.name())).thenReturn(givenToggle.defined().getValue());

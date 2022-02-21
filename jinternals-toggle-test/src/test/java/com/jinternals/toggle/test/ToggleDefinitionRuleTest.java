@@ -14,7 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ToggleDefinitionRuleTest {
 
 
-
     @Test
     @GivenToggle(name = "SOME.TOGGLE1", value = TRUE)
     @GivenToggle(name = "SOME.TOGGLE2", value = TRUE)

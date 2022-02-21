@@ -1,16 +1,16 @@
 package com.jinternals.toggle.autoconfig;
 
 import com.jinternals.toggle.autoconfig.properties.ToggleConfigurationProperties;
+import com.jinternals.toggle.core.definition.ToggleDefinitionParser;
+import com.jinternals.toggle.core.definition.ToggleDefinitionProvider;
+import com.jinternals.toggle.core.definition.impl.YamlToggleDefinitionParser;
+import com.jinternals.toggle.core.repository.DefaultToggleRepository;
+import com.jinternals.toggle.core.repository.ToggleRepository;
 import com.jinternals.toggle.core.services.DefaultService;
 import com.jinternals.toggle.core.services.ToggleService;
-import com.jinternals.toggle.defination.ClasspathToggleDefinitionProvider;
-import com.jinternals.toggle.core.definition.ToggleDefinitionParser;
-import com.jinternals.toggle.core.definition.impl.YamlToggleDefinitionParser;
-import com.jinternals.toggle.core.repository.ToggleRepository;
-import com.jinternals.toggle.core.repository.DefaultToggleRepository;
-import com.jinternals.toggle.core.definition.ToggleDefinitionProvider;
-import com.jinternals.toggle.core.state.ToggleStateProvider;
 import com.jinternals.toggle.core.state.EnvironmentToggleStateProvider;
+import com.jinternals.toggle.core.state.ToggleStateProvider;
+import com.jinternals.toggle.defination.ClasspathToggleDefinitionProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -29,7 +29,7 @@ import static com.jinternals.toggle.Constants.TOGGLE_CONFIG_PREFIX;
 @Configuration
 @EnableConfigurationProperties(ToggleConfigurationProperties.class)
 @ConditionalOnClass({ToggleService.class, ToggleRepository.class, ToggleDefinitionParser.class})
-@ConditionalOnProperty(prefix =  TOGGLE_CONFIG_PREFIX, name="enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(prefix = TOGGLE_CONFIG_PREFIX, name = "enabled", havingValue = "true", matchIfMissing = true)
 public class ToggleAutoConfiguration {
 
 

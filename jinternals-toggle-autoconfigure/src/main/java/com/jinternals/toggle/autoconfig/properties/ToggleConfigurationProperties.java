@@ -2,9 +2,10 @@ package com.jinternals.toggle.autoconfig.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import static com.jinternals.toggle.Constants.TOGGLE_CONFIG_PREFIX;
 import static com.jinternals.toggle.core.constants.ToggleConstants.TOGGLE_FILE_NAME;
 
-@ConfigurationProperties(prefix = "jinternals")
+@ConfigurationProperties(prefix = TOGGLE_CONFIG_PREFIX)
 public class ToggleConfigurationProperties {
 
     private Boolean enabled = true;

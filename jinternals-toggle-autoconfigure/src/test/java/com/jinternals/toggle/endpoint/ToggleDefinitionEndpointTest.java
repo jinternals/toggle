@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
@@ -28,7 +31,7 @@ public class ToggleDefinitionEndpointTest {
     public void shouldTestEndpoint() {
 
         Map<String, ToggleDefinition> toggles = new HashMap<>();
-        toggles.put("some.toggle",new ToggleDefinition("some.toggle","some.toggle.description", ToggleDefinition.State.DEV));
+        toggles.put("some.toggle", new ToggleDefinition("some.toggle", "some.toggle.description", ToggleDefinition.State.DEV));
 
         Set<String> enabledToggles = new HashSet<>();
         enabledToggles.add("some.toggle");
@@ -39,10 +42,10 @@ public class ToggleDefinitionEndpointTest {
         Map<String, Object> result = toggleEndpoint.invoke();
 
         assertThat(result).containsKeys("enabled");
-        assertThat((Set)result.get("enabled")).contains("some.toggle");
+        assertThat((Set) result.get("enabled")).contains("some.toggle");
 
         assertThat(result).containsKeys("available");
-        assertThat((Map<String, ToggleDefinition>)result.get("available")).containsKeys("some.toggle");
+        assertThat((Map<String, ToggleDefinition>) result.get("available")).containsKeys("some.toggle");
 
     }
 }

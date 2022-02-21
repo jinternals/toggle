@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-
 import java.util.regex.Pattern;
 
 import static java.util.Objects.nonNull;
@@ -30,7 +29,7 @@ public class PatternConstraintValidator implements ConstraintValidator<PatternCo
     @Override
     public boolean isValid(String value, ConstraintValidatorContext constraintValidatorContext) {
 
-        if(toggleService.isToggleOn(toggleName) == expectedToBeOn){
+        if (toggleService.isToggleOn(toggleName) == expectedToBeOn) {
             return nonNull(value) && pattern.matcher(value).matches();
         }
 

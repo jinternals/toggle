@@ -14,9 +14,8 @@ Spring bean and controller level methods:
 
             @ToggleDefinition(ToggleDefinition = "some.toggle", expectedToBeOn = true)
 
-    
 Code level toggle conditions:
-    
+
             @Autowire
             private ToggleDecider toggleService;
     
@@ -30,7 +29,7 @@ Code level toggle conditions:
                        ...
             }
 
-### How to enable and disable toggle : 
+### How to enable and disable toggle :
 
             toggle.demo.enabled=true
         
