@@ -13,14 +13,14 @@ public class ToggleEndpointAutoToggleDefinitionConfigurationTest {
     private AnnotationConfigApplicationContext context;
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         if (this.context != null) {
             this.context.close();
         }
     }
 
     @Test
-    public void shouldLoadToggleRepositoryBean() {
+    void shouldLoadToggleRepositoryBean() {
         load(EmptyConfiguration.class);
         ToggleEndpoint toggleEndpoint = this.context.getBean(ToggleEndpoint.class);
         Assertions.assertThat(toggleEndpoint).isNotNull();
@@ -28,7 +28,7 @@ public class ToggleEndpointAutoToggleDefinitionConfigurationTest {
     }
 
     @Test
-    public void shouldLoadCustomToggleRepositoryBean() {
+    void shouldLoadCustomToggleRepositoryBean() {
         load(ToggleEndpointAutoConfiguration.class);
         ToggleEndpoint toggleEndpoint = this.context.getBean(ToggleEndpoint.class);
         Assertions.assertThat(toggleEndpoint).isNotNull();
@@ -36,7 +36,7 @@ public class ToggleEndpointAutoToggleDefinitionConfigurationTest {
     }
 
     @Test
-    public void shouldLoadToggleRepositoryBeanIfEnabled() {
+    void shouldLoadToggleRepositoryBeanIfEnabled() {
         load(EmptyConfiguration.class, "management.endpoint.toggle.enabled=false");
         Assertions.assertThat(this.context.getBeansOfType(ToggleEndpoint.class)).size().isEqualTo(0);
     }

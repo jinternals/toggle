@@ -43,7 +43,7 @@ public class DefaultToggleRepository implements ToggleRepository {
     }
 
     public boolean isToggleOn(String key) {
-        return toggleStatus().get(key);
+        return toggleStatus().getOrDefault(key, false);
     }
 
 

@@ -15,7 +15,7 @@ public class PropertiesToggleDefinitionStateProviderTest {
     private Properties properties = new Properties();
 
     @BeforeEach
-    public void setUp() throws Exception {
+    void setUp() {
 
         this.properties.put("toggle.abc.enabled", "true");
         this.properties.put("toggle.xyz.enabled", "false");
@@ -24,7 +24,7 @@ public class PropertiesToggleDefinitionStateProviderTest {
     }
 
     @Test
-    public void shouldCheckToggleState() {
+    void shouldCheckToggleState() {
 
         boolean abcToggleState = this.propertiesToggleStateProvider.getState("abc");
         boolean xyzToggleState = this.propertiesToggleStateProvider.getState("xyz");

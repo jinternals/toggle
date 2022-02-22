@@ -28,7 +28,7 @@ public class DefaultToggleDefinitionRepositoryTest {
     private ToggleStateProvider toggleStateProvider;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
 
         Set<ToggleDefinition> toggleDefinitions = Sets.newSet(
                 new ToggleDefinition("demo.toggle1", "Demo Toggle1", WIP),
@@ -43,7 +43,7 @@ public class DefaultToggleDefinitionRepositoryTest {
     }
 
     @Test
-    public void shouldCheckToggleIsOn() {
+    void shouldCheckToggleIsOn() {
         when(toggleStateProvider.getState("demo.toggle1")).thenReturn(TRUE);
         when(toggleStateProvider.getState("demo.toggle2")).thenReturn(TRUE);
 
@@ -53,7 +53,7 @@ public class DefaultToggleDefinitionRepositoryTest {
     }
 
     @Test
-    public void shouldCheckToggleIsDefined() {
+    void shouldCheckToggleIsDefined() {
 
         boolean isToggleOn = this.toggleRepository.isDefined("demo.toggle1");
 
@@ -62,7 +62,16 @@ public class DefaultToggleDefinitionRepositoryTest {
     }
 
     @Test
-    public void shouldCheckToggleIsNotDefined() {
+    void shouldReturnFalseIfToggleIsNotDefined() {
+
+        boolean isToggleOn = this.toggleRepository.isToggleOn("demo.toggle1");
+
+        assertThat(isToggleOn).isFalse();
+
+    }
+
+    @Test
+    void shouldCheckToggleIsNotDefined() {
 
         boolean isToggleOn = this.toggleRepository.isDefined("undefined.toggle");
 
@@ -70,7 +79,7 @@ public class DefaultToggleDefinitionRepositoryTest {
     }
 
     @Test
-    public void shouldReturnedAllTheDefinedToggle() {
+    void shouldReturnedAllTheDefinedToggle() {
         when(toggleStateProvider.getState("demo.toggle1")).thenReturn(TRUE);
         when(toggleStateProvider.getState("demo.toggle2")).thenReturn(TRUE);
 

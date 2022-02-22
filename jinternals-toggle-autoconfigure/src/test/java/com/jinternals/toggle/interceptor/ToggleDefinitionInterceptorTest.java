@@ -33,7 +33,7 @@ public class ToggleDefinitionInterceptorTest {
     private HandlerMethod handlerMethod;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    void setUp() throws Exception {
         when(handlerMethod.getMethodAnnotation(Toggle.class)).thenReturn(new Toggle() {
             @Override
             public Class<? extends Annotation> annotationType() {
@@ -55,7 +55,7 @@ public class ToggleDefinitionInterceptorTest {
 
     @Test
     @GivenToggle(name = "some-name", value = TRUE)
-    public void shouldReturnTrueIfMethodIsAnnotatedAndToggleIsOn(ToggleService toggleService) throws Exception {
+    void shouldReturnTrueIfMethodIsAnnotatedAndToggleIsOn(ToggleService toggleService) throws Exception {
 
         ToggleInterceptor interceptor = new ToggleInterceptor(toggleService);
 
@@ -67,7 +67,7 @@ public class ToggleDefinitionInterceptorTest {
 
     @Test
     @GivenToggle(name = "some-name", value = FALSE)
-    public void shouldReturnFalseIfMethodIsAnnotatedAndToggleIsOff(ToggleService toggleService) throws Exception {
+    void shouldReturnFalseIfMethodIsAnnotatedAndToggleIsOff(ToggleService toggleService) throws Exception {
 
         ToggleInterceptor interceptor = new ToggleInterceptor(toggleService);
 
@@ -80,7 +80,7 @@ public class ToggleDefinitionInterceptorTest {
 
     @Test
     @GivenToggle(name = "some-name", value = FALSE)
-    public void shouldReturnTrueIfMethodIsNotAnnotated(ToggleService toggleService) throws Exception {
+    void shouldReturnTrueIfMethodIsNotAnnotated(ToggleService toggleService) throws Exception {
         when(handlerMethod.getMethodAnnotation(Toggle.class)).thenReturn(null);
 
         ToggleInterceptor interceptor = new ToggleInterceptor(toggleService);
@@ -93,12 +93,11 @@ public class ToggleDefinitionInterceptorTest {
 
     @Test
     @GivenToggle(name = "some-name", value = FALSE, defined = FALSE)
-    public void shouldReturnFalseIfToggleIsNotDefined(ToggleService toggleService) throws Exception {
+    void shouldReturnFalseIfToggleIsNotDefined(ToggleService toggleService) throws Exception {
 
         ToggleInterceptor interceptor = new ToggleInterceptor(toggleService);
 
         boolean result = interceptor.preHandle(request, response, handlerMethod);
-
 
         assertThat(result).isFalse();
     }

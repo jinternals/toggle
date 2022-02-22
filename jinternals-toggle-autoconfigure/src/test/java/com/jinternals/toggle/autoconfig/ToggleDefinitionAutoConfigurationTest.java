@@ -17,14 +17,14 @@ public class ToggleDefinitionAutoConfigurationTest {
     private AnnotationConfigApplicationContext context;
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         if (this.context != null) {
             this.context.close();
         }
     }
 
     @Test
-    public void shouldLoadToggleRepositoryBean() {
+    void shouldLoadToggleRepositoryBean() {
         load(EmptyConfiguration.class, "toggle.abc.r1.enabled=true", "toggle.xyz.r2.enabled=false");
         ToggleRepository toggleRepository = this.context.getBean(ToggleRepository.class);
         assertThat(toggleRepository).isNotNull();
@@ -34,7 +34,7 @@ public class ToggleDefinitionAutoConfigurationTest {
     }
 
     @Test
-    public void shouldLoadToggleDeciderBean() {
+    void shouldLoadToggleDeciderBean() {
         load(EmptyConfiguration.class, "toggle.abc.r1.enabled=true", "toggle.xyz.r2.enabled=false");
         ToggleService toggleService = this.context.getBean(ToggleService.class);
         assertThat(toggleService).isNotNull();
@@ -44,7 +44,7 @@ public class ToggleDefinitionAutoConfigurationTest {
     }
 
     @Test
-    public void shouldLoadToggleDefinitionProviderBean() {
+    void shouldLoadToggleDefinitionProviderBean() {
         load(EmptyConfiguration.class);
         ToggleDefinitionProvider toggleDefinitionProvider = this.context.getBean(ToggleDefinitionProvider.class);
         assertThat(toggleDefinitionProvider.getToggleDefinitions().size()).isEqualTo(2);

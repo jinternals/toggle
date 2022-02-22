@@ -19,7 +19,7 @@ public class EnvironmentToggleDefinitionStateProviderTest {
     private Environment environment;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         provider = new EnvironmentToggleStateProvider(environment);
     }
 
@@ -33,7 +33,7 @@ public class EnvironmentToggleDefinitionStateProviderTest {
     }
 
     @Test
-    public void shouldReturnFalseIfToggleIsSetFalse() {
+    void shouldReturnFalseIfToggleIsSetFalse() {
         when(environment.getProperty("toggle.some-toggle.enabled", Boolean.class, false)).thenReturn(false);
 
         boolean result = provider.getState("some-toggle");

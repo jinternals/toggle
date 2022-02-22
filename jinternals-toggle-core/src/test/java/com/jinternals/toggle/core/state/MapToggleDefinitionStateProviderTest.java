@@ -17,7 +17,7 @@ public class MapToggleDefinitionStateProviderTest {
     private Map<String, Boolean> toogleState = new HashMap<>();
 
     @BeforeEach
-    public void setUp() throws Exception {
+     void setUp() throws Exception {
 
         this.toogleState.put("toggle.toggle1.enabled", true);
         this.toogleState.put("toggle.toggle2.enabled", false);
@@ -26,7 +26,7 @@ public class MapToggleDefinitionStateProviderTest {
     }
 
     @Test
-    public void shouldCheckToggleState() {
+    void shouldCheckToggleState() {
         boolean toggle1State = this.mapToggleStateProvider.getState("toggle1");
         boolean toggle2State = this.mapToggleStateProvider.getState("toggle2");
 

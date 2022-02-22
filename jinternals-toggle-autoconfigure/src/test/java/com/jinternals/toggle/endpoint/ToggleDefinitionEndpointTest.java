@@ -28,7 +28,7 @@ public class ToggleDefinitionEndpointTest {
     private ToggleRepository toggleRepository;
 
     @Test
-    public void shouldTestEndpoint() {
+    void shouldTestEndpoint() {
 
         Map<String, ToggleDefinition> toggles = new HashMap<>();
         toggles.put("some.toggle", new ToggleDefinition("some.toggle", "some.toggle.description", ToggleDefinition.State.DEV));
